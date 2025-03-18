@@ -9,4 +9,4 @@ dependencies:
   - python=3.10
   - pandas
   - openpyxl  # For reading Excel files
-  - argparse  # Though argparse is built into Python, adding for clarity
+  - pip

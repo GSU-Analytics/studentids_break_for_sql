@@ -6,13 +6,16 @@
 import os
 import argparse
 import pandas as pd
-from scripts.utils import break_up_pidms, break_up_whkeys, break_up_pantherids
+from utils import break_up_pidms, break_up_whkeys, break_up_pantherids
 
-# Set paths
-UPLOADS_DIR = "uploads"
-OUTPUTS_DIR = "outputs"
+# Define fixed paths (ensuring outputs/ stays in the project root)
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))  # scripts/ directory
+PROJECT_ROOT = os.path.dirname(BASE_DIR)  # Go up one level to project root
 
-# Ensure outputs directory exists
+UPLOADS_DIR = os.path.join(PROJECT_ROOT, "uploads")
+OUTPUTS_DIR = os.path.join(PROJECT_ROOT, "outputs")
+
+# Ensure outputs directory exists in the project root
 os.makedirs(OUTPUTS_DIR, exist_ok=True)
 
 def process_file(input_file, id_type):
@@ -48,6 +51,11 @@ def process_file(input_file, id_type):
         break_up_pantherids(input_file, output_txt)
     else:
         print("Error: Invalid ID type. Choose from 'pidm', 'whkey', or 'pantherid'.")
+        return
+    
+    # Print success message if the output file is created
+    if os.path.exists(output_txt):
+        print(f"✅ Export successful! File saved to: {output_txt}")
 
 if __name__ == "__main__":
     # Setup argument parser
@@ -65,5 +73,4 @@ if __name__ == "__main__":
         print(f"Error: File '{args.file}' not found in /uploads.")
     else:
         process_file(input_file_path, args.idtype)
-        print(f"Output saved to /outputs/{args.idtype}_output.txt")
 
