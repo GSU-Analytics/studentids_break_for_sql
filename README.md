@@ -41,8 +41,8 @@ Run the script from the command line, specifying the input file and ID type.
 Make sure that your Excel file or csv file is properly formatted (Single Column with a header formatted as: **PIDM, WHKEY, and pantherid**).
 
 ```bash
-python scripts/main.py --file sample.csv --idtype WHKEY
-python scripts/main.py --file sample.xlsx --idtype PIDM
+python scripts/main.py --file sample.csv --idtype whkey
+python scripts/main.py --file sample.xlsx --idtype pidm
 python scripts/main.py --file sample.csv --idtype pantherid
 ```
 
