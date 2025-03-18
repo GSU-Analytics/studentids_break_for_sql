@@ -1,0 +1,12 @@
+# conda env create -f id_sql_prep.yaml
+# conda activate id_sql_prep
+
+name: id_sql_prep
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pandas
+  - openpyxl  # For reading Excel files
+  - argparse  # Though argparse is built into Python, adding for clarity
